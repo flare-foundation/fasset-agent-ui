@@ -131,7 +131,6 @@ export default function VaultsCard({ className, collateral }: IVaultsCard) {
                 height="26"
                 className="mr-1 self-center shrink-0"
             />
-
         },
         {
             id: 'address',

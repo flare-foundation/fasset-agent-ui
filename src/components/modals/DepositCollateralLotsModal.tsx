@@ -24,7 +24,8 @@ import EthIcon from "@/components/icons/EthIcon";
 import BtcIcon from "@/components/icons/BtcIcon";
 import DogeIcon from "@/components/icons/DogeIcon";
 import SgbIcon from "@/components/icons/SgbIcon";
-import Usdt0Icon from "@/components/icons/Usdt0";
+import Usdt0Icon from "@/components/icons/Usdt0Icon";
+import C2FlrIcon from "@/components/icons/C2FlrIcon";
 
 interface IDepositCollateralLotsModal {
     opened: boolean;
@@ -142,12 +143,15 @@ export default function DepositCollateralLotsModal({ opened, fAssetSymbol, agent
     }
 
     const getIcon = (token: string) => {
+        console.log(token)
         if (token.toLowerCase().includes('usdc')) {
             return <UsdcIcon width="16" height="16" className="flex-shrink-0" />;
-        } else if (token.toLowerCase().includes('usdt')) {
+        } else if (token.toLowerCase().includes('testusdt')) {
             return <Usdt0Icon width="16" height="16" className="flex-shrink-0" />;
         } else if (token.toLowerCase().includes('usdt')) {
             return <UsdtIcon width="16" height="16" className="flex-shrink-0" />;
+        } else if (token.toLowerCase().includes('c2flr')) {
+            return <C2FlrIcon width="16" height="16" className="flex-shrink-0" />;
         } else if (token.toLowerCase().includes('flr')) {
             return <CflrIcon width="16" height="16" className="flex-shrink-0" />;
         } else if (token.toLowerCase().includes('xrp')) {

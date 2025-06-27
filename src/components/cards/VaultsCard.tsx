@@ -388,20 +388,6 @@ export default function VaultsCard({ className, collateral }: IVaultsCard) {
             }
         },
         {
-            id: 'handshakeType',
-            label: t('vaults_card.table.handshake_label'),
-            sorted: true,
-            render: (vault: IVault) => {
-                return (
-                    <Text
-                        size="sm"
-                    >
-                        {vault.handshakeType === 0 ? t('vaults_card.no_label') : t('vaults_card.yes_label')}
-                    </Text>
-                );
-            }
-        },
-        {
             id: 'delegationPercentage',
             label: t('vaults_card.table.delegated_label'),
             sorted: true,

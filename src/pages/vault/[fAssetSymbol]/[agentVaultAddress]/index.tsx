@@ -94,18 +94,6 @@ export default function Vault() {
                 {
                     name: 'poolExitCollateralRatioBIPS',
                     value: (data.poolExitCollateralRatio * 10000).toString()
-                },
-                {
-                    name: 'poolTopupCollateralRatioBIPS',
-                    value: (data.poolTopUpCollateralRatio * 10000).toString()
-                },
-                {
-                    name: 'poolTopupTokenPriceFactorBIPS',
-                    value: (data.poolTopUpTokenPriceFactor * 10000).toString()
-                },
-                {
-                    name: 'handshakeType',
-                    value: data.handshakeType
                 }
             ];
 
@@ -139,10 +127,7 @@ export default function Vault() {
                 mintingVaultCollateralRatio: Number(vaultInfo.data.mintingVaultCollateralRatioBIPS) / 10000,
                 mintingPoolCollateralRatio: Number(vaultInfo.data.mintingPoolCollateralRatioBIPS) / 10000,
                 poolExitCollateralRatio: Number(vaultInfo.data.poolExitCollateralRatioBIPS) / 10000,
-                buyFAssetByAgentFactor: Number(vaultInfo.data.buyFAssetByAgentFactorBIPS) / 10000,
-                poolTopUpCollateralRatio: Number(vaultInfo.data.poolTopupCollateralRatioBIPS) / 10000,
-                poolTopUpTokenPriceFactor: Number(vaultInfo.data.poolTopupTokenPriceFactorBIPS) / 10000,
-                handshakeType: vaultInfo.data.handshakeType,
+                buyFAssetByAgentFactor: Number(vaultInfo.data.buyFAssetByAgentFactorBIPS) / 10000
             });
         }
         setIsEditing(false);

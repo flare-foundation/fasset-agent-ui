@@ -24,7 +24,6 @@ const AGENT_VAULT_KEY = {
     AMOUNT_FOR_SELF_MINT_FREE_UNDERLYING: 'agentVault.amountForSelfMintFreeUnderlying',
     TRANSFERABLE_CV_DATA: 'agentVault.transferableCvData',
     REQUESTABLE_CV_DATA: 'agentVault.requestableCvData',
-    CV_FEE: 'agentVault.cvFee'
 }
 
 export function useDepositCollateral() {
@@ -240,16 +239,6 @@ export function useRequestWithdrawalFromCv() {
     })
 }
 
-export function useCvFee(fAssetSymbol: string, agentVaultAddress: string, amount: number, enabled: boolean = true) {
-    return useQuery({
-        queryKey: [AGENT_VAULT_KEY.REQUESTABLE_CV_DATA, fAssetSymbol, agentVaultAddress, amount],
-        queryFn: async() => {
-            const response = await apiClient.get(`${resource}/getCVFee/${fAssetSymbol}/${agentVaultAddress}/${amount}`);
-            return response.data.data as ICvFee;
-        },
-        enabled: enabled
-    })
-}
 
 export function useCancelTransferToCoreVault() {
     return useMutation({

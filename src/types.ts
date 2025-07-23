@@ -106,9 +106,6 @@ export interface IAgentSettingsConfig {
     mintingPoolCollateralRatio: string;
     poolExitCollateralRatio: string;
     buyFAssetByAgentFactor: string;
-    poolTopupCollateralRatio: string;
-    poolTopupTokenPriceFactor: string;
-    handshakeType: number;
     redemptionPoolFeeShareBIPS?: string;
 }
 

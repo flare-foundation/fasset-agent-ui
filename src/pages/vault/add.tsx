@@ -13,12 +13,10 @@ import { useRouter } from 'next/navigation'
 import { modals } from '@mantine/modals';
 import { useState, useRef } from 'react';
 import VaultForm, { FormRef } from '@/components/forms/VaultForm';
-import { useBalances, useCreateVault } from '@/api/agent';
+import { useCreateVault } from '@/api/agent';
 import { showErrorNotification } from '@/hooks/useNotifications';
 import { IAgentSettingsConfig } from '@/types';
 import BackButton from "@/components/elements/BackButton";
-import { toNumber } from "@/utils";
-import { MIN_CREATE_VAULT_BALANCE } from "@/constants";
 
 export default function AddVault() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,7 +24,6 @@ export default function AddVault() {
     const router = useRouter();
     const formRef = useRef<FormRef>(null);
     const createVault = useCreateVault();
-    const balances = useBalances(false);
 
     const confirmModal = () => {
         const form = formRef?.current?.form();
@@ -88,10 +85,7 @@ export default function AddVault() {
                 mintingVaultCollateralRatio: data.mintingVaultCollateralRatio,
                 mintingPoolCollateralRatio: data.mintingPoolCollateralRatio,
                 poolExitCollateralRatio: data.poolExitCollateralRatio,
-                buyFAssetByAgentFactor: data.buyFAssetByAgentFactor,
-                poolTopupCollateralRatio: data.poolTopUpCollateralRatio,
-                poolTopupTokenPriceFactor: data.poolTopUpTokenPriceFactor,
-                handshakeType: Number(data.handshakeType)
+                buyFAssetByAgentFactor: data.buyFAssetByAgentFactor
             }
 
             createVault.mutateAsync({

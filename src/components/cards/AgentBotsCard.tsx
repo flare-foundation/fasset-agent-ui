@@ -88,8 +88,8 @@ export default function AgentBotsCard({ className,  balances}: IAgentBotsCard) {
                                                 <span className="status-dot mr-2"
                                                       style={{backgroundColor: textColorStatus}}></span>
                                                 <span style={{color: textColorStatus}}>
-                                                        {t(`agent_bots_card.table.agent_${botStatus.data ? 'live' : 'offline'}_label`)}
-                                                    </span>
+                                                    {t(`agent_bots_card.table.agent_${botStatus.data ? 'live' : 'offline'}_label`)}
+                                                </span>
                                             </div>
                                         </Badge>
                                     </div>

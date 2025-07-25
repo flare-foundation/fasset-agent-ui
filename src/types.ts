@@ -264,3 +264,13 @@ export interface IRedemptionQueueData {
     mintedLots: number;
     redemptionQueueLots: number;
 }
+
+export interface IOtherBot {
+    type: string;
+    address: string;
+    status: boolean;
+    balances: {
+        symbol: string;
+        balance: string;
+    }[];
+}

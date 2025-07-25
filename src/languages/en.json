@@ -188,6 +188,7 @@
     "dashboard": {
         "agent_title": "Agent Bots",
         "alerts_title": "Alerts & Notifications",
+        "other_title": "Other",
         "title": "Overview",
         "vaults_title": "Vaults",
         "xrp_supply_title": "{{token}} Supply"
@@ -357,6 +358,15 @@
         "no_notifications_label": "No new notifications available",
         "show_all_button": "Show all",
         "title": "Notifications from Flare"
+    },
+    "other_bots_card": {
+        "table": {
+            "agent_live_label": "Online",
+            "agent_offline_label": "Offline",
+            "status_label": "Status",
+            "type_label": "Type",
+            "working_address_label": "Working address"
+        }
     },
     "select_wallet_button": {
         "connect_label": "Connect",

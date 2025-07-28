@@ -33,6 +33,7 @@ interface ICollateralTemplate {
     mintingPoolCollateralRatio: number;
     poolExitCollateralRatio: number;
     buyFAssetByAgentFactor: number;
+    redemptionPoolFeeShare: string;
 }
 interface IFormValues {
     name: string | undefined;
@@ -46,6 +47,7 @@ interface IFormValues {
     mintingPoolCollateralRatio: number | undefined;
     poolExitCollateralRatio: number | undefined;
     buyFAssetByAgentFactor: number | undefined;
+    redemptionPoolFeeShare: number | undefined;
 }
 export type FormRef = {
     form: () => UseFormReturnType<any>;
@@ -110,6 +112,16 @@ const VaultForm = forwardRef<FormRef, IForm>(({ vault, disabled }: IForm, ref) =
             });
         }
 
+        if (!vault) {
+            schema = schema.shape({
+                redemptionPoolFeeShare: yup
+                    .string()
+                    .required(
+                        t('validation.messages.required', { field: t('forms.vault.redemption_pool_fee_share_label') })
+                    ),
+            });
+        }
+
         return schema;
     }
 
@@ -126,7 +138,8 @@ const VaultForm = forwardRef<FormRef, IForm>(({ vault, disabled }: IForm, ref) =
             mintingVaultCollateralRatio: undefined,
             mintingPoolCollateralRatio: undefined,
             poolExitCollateralRatio: undefined,
-            buyFAssetByAgentFactor: undefined
+            buyFAssetByAgentFactor: undefined,
+            redemptionPoolFeeShare: undefined
         },
         //@ts-ignore
         validate: yupResolver(getSchema(vault)),
@@ -208,6 +221,7 @@ const VaultForm = forwardRef<FormRef, IForm>(({ vault, disabled }: IForm, ref) =
             mintingVaultCollateralRatio: Number(collateralTemplate.mintingVaultCollateralRatio),
             poolExitCollateralRatio: Number(collateralTemplate.poolExitCollateralRatio),
             buyFAssetByAgentFactor: Number(collateralTemplate.buyFAssetByAgentFactor),
+            redemptionPoolFeeShare: Number(collateralTemplate.redemptionPoolFeeShare.replace('%', '')),
         });
     }, [collateralTemplate]);
 
@@ -428,6 +442,23 @@ const VaultForm = forwardRef<FormRef, IForm>(({ vault, disabled }: IForm, ref) =
                         className="mt-4"
                         onKeyDownCapture={onKeyDownCapture}
                     />
+                    {vault == undefined &&
+                        <NumberInput
+                            {...form.getInputProps('redemptionPoolFeeShare')}
+                            //@ts-ignore
+                            key={form.key('redemptionPoolFeeShareBIPS')}
+                            label={t('forms.vault.redemption_pool_fee_share_label')}
+                            description={t('forms.vault.redemption_pool_fee_share_description_label')}
+                            disabled={isHiddenInputDisabled || disabled}
+                            placeholder={t('forms.vault.enter_placeholder')}
+                            withAsterisk
+                            allowNegative={false}
+                            step={1}
+                            suffix="%"
+                            className="mt-4"
+                            onKeyDownCapture={onKeyDownCapture}
+                        />
+                    }
                 </>
             }
             {minAmountDescriptionLabel &&

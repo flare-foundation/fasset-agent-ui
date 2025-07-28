@@ -107,6 +107,7 @@ export interface IAgentSettingsConfig {
     poolExitCollateralRatio: string;
     buyFAssetByAgentFactor: string;
     redemptionPoolFeeShareBIPS?: string;
+    redemptionPoolFeeShare?: string;
 }
 
 export interface IAgentVault {

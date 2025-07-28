@@ -85,7 +85,8 @@ export default function AddVault() {
                 mintingVaultCollateralRatio: data.mintingVaultCollateralRatio,
                 mintingPoolCollateralRatio: data.mintingPoolCollateralRatio,
                 poolExitCollateralRatio: data.poolExitCollateralRatio,
-                buyFAssetByAgentFactor: data.buyFAssetByAgentFactor
+                buyFAssetByAgentFactor: data.buyFAssetByAgentFactor,
+                redemptionPoolFeeShare: `${data.redemptionPoolFeeShare}%`,
             }
 
             createVault.mutateAsync({

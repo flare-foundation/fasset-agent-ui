@@ -1,5 +1,3 @@
-
-
 interface IIconProps {
     width?: string;
     height?: string;

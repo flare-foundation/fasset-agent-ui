@@ -20,7 +20,8 @@ import {
     IVaultCollateral,
     IOwnerUnderlyingBalance,
     IOwnerFassetBalance,
-    IRedemptionQueueData
+    IRedemptionQueueData,
+    IOtherBot
 } from "@/types";
 import { orderBy } from "lodash";
 
@@ -43,7 +44,8 @@ const AGENT_KEY = {
     UNDERLYING_ADDRESSES: 'agent.underlyingAddresses',
     OWNER_UNDERLYING_BALANCE: 'agent.ownerUnderlyingBalance',
     OWNER_FASSET_BALANCE: 'agent.ownerFassetBalance',
-    REDEMPTION_QUEUE_DATA: 'agent.redemptionQueueData'
+    REDEMPTION_QUEUE_DATA: 'agent.redemptionQueueData',
+    OTHER_BOTS: 'agent.otherBots'
 }
 
 export function useWorkAddress(enabled: boolean = true) {
@@ -389,3 +391,15 @@ export function useRedemptionQueueData(enabled: boolean = true) {
         enabled: enabled
     })
 }
+
+export function useOtherBots(enabled: boolean = true) {
+    return useQuery({
+        queryKey: [AGENT_KEY.OTHER_BOTS],
+        queryFn: async () => {
+            const response = await apiClient.get(`${resource}/otherBots`);
+            return response.data.data as IOtherBot[];
+        },
+        enabled: enabled
+    })
+}
+

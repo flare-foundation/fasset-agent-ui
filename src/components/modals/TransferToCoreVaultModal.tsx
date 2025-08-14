@@ -15,7 +15,7 @@ import { useForm } from "@mantine/form";
 import { yupResolver } from "mantine-form-yup-resolver";
 import { IconExclamationCircle } from "@tabler/icons-react";
 import { getIcon, toNumber } from "@/utils";
-import { useCvFee, useRequestTransferToCv, useTransferableCvData } from "@/api/agentVault";
+import { useRequestTransferToCv, useTransferableCvData } from "@/api/agentVault";
 import { modals } from "@mantine/modals";
 import { useRouter } from "next/router";
 
@@ -38,8 +38,6 @@ export default function TransferToCoreVaultModal({ opened, onClose, fAssetSymbol
     const { t } = useTranslation();
     const transferableCvData = useTransferableCvData(fAssetSymbol, agentVaultAddress, opened);
     const requestTransferToCv = useRequestTransferToCv();
-    const cvFee = useCvFee(fAssetSymbol, agentVaultAddress, amount ?? 0, opened && amount !== undefined);
-    const cvFeeIcon = getIcon(cvFee.data?.symbol ?? '', '16');
     const tokenIcon = getIcon(fAssetSymbol, '16');
     const router = useRouter();
 
@@ -208,39 +206,6 @@ export default function TransferToCoreVaultModal({ opened, onClose, fAssetSymbol
                         </div>
                     </Grid.Col>
                 </Grid>
-                <div className="py-5">
-                    <div>
-                        <Text
-                            c="var(--flr-gray)"
-                            className="uppercase"
-                            size="sm"
-                        >
-                            {t('transfer_to_core_vault_modal.fees_label')}
-                        </Text>
-
-                    </div>
-                    <div className="flex justify-between">
-                        <Text
-                            c="var(--flr-black)"
-                            size="sm"
-                        >
-                            {t('transfer_to_core_vault_modal.transfer_fee_label')}
-                        </Text>
-                        {cvFee.data !== undefined
-                            ? <div className="flex items-center">
-                                {cvFeeIcon}
-                                <Text
-                                    c="var(--flr-black)"
-                                    size="sm"
-                                    className="ml-1"
-                                >
-                                    {cvFee.data?.fee} <span className="text-[var(--flr-lighter-black)]">(${cvFee.data?.feeUSD})</span>
-                                </Text>
-                            </div>
-                            : <span>&mdash;</span>
-                        }
-                    </div>
-                </div>
                 <Divider
                     className="my-8"
                     styles={{

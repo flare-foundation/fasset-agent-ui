@@ -131,7 +131,6 @@ export default function VaultsCard({ className, collateral }: IVaultsCard) {
                 height="26"
                 className="mr-1 self-center shrink-0"
             />
-
         },
         {
             id: 'address',
@@ -384,20 +383,6 @@ export default function VaultsCard({ className, collateral }: IVaultsCard) {
                         size="sm"
                     >
                         {vault.poolFee || '0'} <span className="text-[var(--flr-darker-gray)]">%</span>
-                    </Text>
-                );
-            }
-        },
-        {
-            id: 'handshakeType',
-            label: t('vaults_card.table.handshake_label'),
-            sorted: true,
-            render: (vault: IVault) => {
-                return (
-                    <Text
-                        size="sm"
-                    >
-                        {vault.handshakeType === 0 ? t('vaults_card.no_label') : t('vaults_card.yes_label')}
                     </Text>
                 );
             }

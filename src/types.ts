@@ -106,10 +106,8 @@ export interface IAgentSettingsConfig {
     mintingPoolCollateralRatio: string;
     poolExitCollateralRatio: string;
     buyFAssetByAgentFactor: string;
-    poolTopupCollateralRatio: string;
-    poolTopupTokenPriceFactor: string;
-    handshakeType: number;
     redemptionPoolFeeShareBIPS?: string;
+    redemptionPoolFeeShare?: string;
 }
 
 export interface IAgentVault {
@@ -266,4 +264,14 @@ export interface ICvFee {
 export interface IRedemptionQueueData {
     mintedLots: number;
     redemptionQueueLots: number;
+}
+
+export interface IOtherBot {
+    type: string;
+    address: string;
+    status: boolean;
+    balances: {
+        symbol: string;
+        balance: string;
+    }[];
 }

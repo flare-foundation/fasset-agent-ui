@@ -63,6 +63,8 @@ export interface INotification {
 
 export interface IVault {
     address: string;
+    agentOnlyPoolCollateral: string;
+    agentOnlyPoolCollateralUSD: string;
     allLots: string;
     freeLots: string;
     mintedAmount: string;
@@ -274,4 +276,9 @@ export interface IOtherBot {
         symbol: string;
         balance: string;
     }[];
+}
+
+export interface IFullAgentFund {
+    balance: string;
+    symbol: string;
 }

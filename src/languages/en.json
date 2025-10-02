@@ -348,6 +348,7 @@
         "address_whitelisted_label": "Address whitelisted",
         "how_to_whitelist_agent_description": "To get your Agent (Management address) on whitelist please register your Agent via the<a>Fassets Telegram bot<icon></icon></a>",
         "management_address_label": "Management address",
+        "total_agent_funds_label": "Total Agent funds",
         "underlying_addresses_label": "Underyling addresses"
     },
     "notifications": {
@@ -551,6 +552,7 @@
                 "withdraw_collateral_pool_tokens_label": "Withdraw Collateral pool tokens",
                 "withdraw_vault_collateral_label": "Withdraw Vault Collateral"
             },
+            "agent_collateral_label": "Agent collateral",
             "agent_label": "Agent",
             "amount_label": "Amount",
             "cr_label": "CR",

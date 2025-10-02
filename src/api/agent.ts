@@ -21,7 +21,7 @@ import {
     IOwnerUnderlyingBalance,
     IOwnerFassetBalance,
     IRedemptionQueueData,
-    IOtherBot
+    IOtherBot, IFullAgentFund
 } from "@/types";
 import { orderBy } from "lodash";
 
@@ -45,7 +45,8 @@ const AGENT_KEY = {
     OWNER_UNDERLYING_BALANCE: 'agent.ownerUnderlyingBalance',
     OWNER_FASSET_BALANCE: 'agent.ownerFassetBalance',
     REDEMPTION_QUEUE_DATA: 'agent.redemptionQueueData',
-    OTHER_BOTS: 'agent.otherBots'
+    OTHER_BOTS: 'agent.otherBots',
+    FULL_AGENT_FUNDS: 'agent.fullAgentFunds'
 }
 
 export function useWorkAddress(enabled: boolean = true) {
@@ -398,6 +399,17 @@ export function useOtherBots(enabled: boolean = true) {
         queryFn: async () => {
             const response = await apiClient.get(`${resource}/otherBots`);
             return response.data.data as IOtherBot[];
+        },
+        enabled: enabled
+    })
+}
+
+export function useFullAgentFunds(enabled: boolean = true) {
+    return useQuery({
+        queryKey: [AGENT_KEY.FULL_AGENT_FUNDS],
+        queryFn: async () => {
+            const response = await apiClient.get(`${resource}/fullAgentFunds`);
+            return response.data.data as IFullAgentFund[];
         },
         enabled: enabled
     })

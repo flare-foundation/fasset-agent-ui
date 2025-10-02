@@ -27,7 +27,7 @@ interface IAgentBotsCard {
     balances: UseQueryResult<IBalance[], Error>;
 }
 
-export default function AgentBotsCard({ className,  balances}: IAgentBotsCard) {
+export default function AgentBotsCard({ className,  balances }: IAgentBotsCard) {
     const { t } = useTranslation();
     const workAddress = useWorkAddress();
     const botStatus = useBotStatus();

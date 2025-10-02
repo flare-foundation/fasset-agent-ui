@@ -374,6 +374,29 @@ export default function VaultsCard({ className, collateral }: IVaultsCard) {
             }
         },
         {
+            id: 'agentCollateral',
+            label: t('vaults_card.table.agent_collateral_label'),
+            render: (vault: IVault) => {
+                return (
+                    <div>
+                        <Text
+                            size="sm"
+                        >
+                            {vault.agentOnlyPoolCollateral}
+                            <span className="mx-1 text-[var(--flr-darker-gray)]">{process.env.NATIVE_TOKEN}</span>
+                            ({vault?.agentOnlyPoolCollateralUSD} <span className="ml-1 text-[var(--flr-darker-gray)]">$</span>)
+                        </Text>
+                        <Text
+                            size="xs"
+                            c="var(--flr-darker-gray)"
+                        >
+                            {t('vaults_card.table.amount_label')}
+                        </Text>
+                    </div>
+                )
+            }
+        },
+        {
             id: 'poolFee',
             label: t('vaults_card.table.pool_fee'),
             sorted: true,

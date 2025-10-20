@@ -105,8 +105,8 @@ export default function ManagementAddressCard({ className }: IManagementAddressC
                         {t('management_address_card.total_agent_funds_label')}
                     </Text>
                     <div>
-                        {fullAgentFunds.data?.map(fund => (
-                            <Text size="sm">
+                        {fullAgentFunds.data?.map((fund, index) => (
+                            <Text size="sm" key={index}>
                                 {fund.symbol}: {fund.balance}
                             </Text>
                         ))}

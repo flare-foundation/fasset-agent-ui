@@ -5,7 +5,7 @@ import {
     Anchor,
     rem
 } from "@mantine/core";
-import { useIsWhitelisted, useManagementAddress, useUnderlyingAddresses } from "@/api/agent";
+import { useFullAgentFunds, useIsWhitelisted, useManagementAddress, useUnderlyingAddresses } from "@/api/agent";
 import { useTranslation, Trans } from "react-i18next";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import { truncateString } from "@/utils";
@@ -20,6 +20,7 @@ export default function ManagementAddressCard({ className }: IManagementAddressC
     const isWhitelisted = useIsWhitelisted();
     const managementAddress= useManagementAddress();
     const underlyingAddresses = useUnderlyingAddresses();
+    const fullAgentFunds = useFullAgentFunds();
 
     return (
         <Paper
@@ -90,6 +91,24 @@ export default function ManagementAddressCard({ className }: IManagementAddressC
                                     text={address.address}
                                 />
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="flex justify-between flex-wrap md:flex-nowrap mt-2">
+                <div className="flex justify-between sm:justify-normal w-full sm:w-auto flex-wrap">
+                    <Text
+                        className="mr-3"
+                        c="var(--flr-darkest-gray)"
+                        size="sm"
+                    >
+                        {t('management_address_card.total_agent_funds_label')}
+                    </Text>
+                    <div>
+                        {fullAgentFunds.data?.map((fund, index) => (
+                            <Text size="sm" key={index}>
+                                {fund.symbol}: {fund.balance}
+                            </Text>
                         ))}
                     </div>
                 </div>

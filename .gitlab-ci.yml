@@ -1,0 +1,13 @@
+stages:
+  - release-images
+
+include:
+  # CONTAINER IMAGE RELEASE COMPONENT
+  - component: gitlab.com/flarenetwork/ci-components-private/release-image@test-release-image-gitlab
+    inputs:
+      image_name: "bootstrapper"
+      image_tag_source: commit_tag
+      registry_auth: "gitlab"
+      push_to_sandbox: false
+      staging_registry: "$CI_REGISTRY_IMAGE"
+      production_registry: "$CI_REGISTRY_IMAGE"

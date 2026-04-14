@@ -5,7 +5,7 @@ include:
   # CONTAINER IMAGE RELEASE COMPONENT
   - component: gitlab.com/flarenetwork/ci-components-private/release-image@test-release-image-gitlab
     inputs:
-      image_name: "bootstrapper"
+      image_name: "fasset-agent-ui"
       image_tag_source: commit_tag
       registry_auth: "gitlab"
       push_to_sandbox: false

@@ -6,4 +6,3 @@ release:
 
 release-fast:
   releaser release --config ./release_config.yaml --fast
-

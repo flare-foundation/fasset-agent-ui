@@ -44,7 +44,7 @@ just release
 **Fast release** (auto-bumps the pre-release version, e.g., `rc.1` → `rc.2`):
 
 ```bash
-just release --fast
+just release-fast
 ```
 
 > `--fast` only works when the current version is already a pre-release.

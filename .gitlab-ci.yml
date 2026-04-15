@@ -7,6 +7,7 @@ include:
     inputs:
       image_name: "fasset-agent-ui"
       image_tag_source: commit_tag
+      build_tags: ["flarenetwork-lg"]
       registry_auth: "gitlab"
       push_to_sandbox: false
       staging_registry: "$CI_REGISTRY_IMAGE"

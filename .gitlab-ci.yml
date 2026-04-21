@@ -1,7 +1,13 @@
 stages:
+  - test
+  - sbom
   - release-images
 
-include:
+include:  
+  - component: gitlab.com/flarenetwork/infra-public/ci-components/dependency-track@~latest
+  - component: gitlab.com/flarenetwork/ci-components-private/lgtm@2
+  - component: gitlab.com/flarenetwork/ci-components-private/lint-helm@2
+  - component: gitlab.com/flarenetwork/ci-components-private/lint-dockerfile@2
   # CONTAINER IMAGE RELEASE COMPONENT
   - component: gitlab.com/flarenetwork/ci-components-private/release-image@2
     inputs:

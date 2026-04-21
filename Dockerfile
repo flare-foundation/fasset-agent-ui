@@ -1,20 +1,37 @@
-# base image
-FROM node:20
+# build stage
+FROM node:20-alpine AS builder
 
-# set working directory
 WORKDIR /app
 
-# install and cache app dependencies
+RUN apk add --no-cache libc6-compat
+
 COPY package.json package-lock.json ./
 
-#RUN npm cache clean --force
-RUN npm install
+RUN npm ci
 
-COPY next.config.mjs ./
-COPY tsconfig.json ./
-COPY postcss.config.cjs ./
-COPY tailwind.config.ts ./
+COPY next.config.mjs tsconfig.json postcss.config.cjs tailwind.config.ts ./
+COPY src ./src
 
-COPY ./src ./src
+RUN npm run build
 
-ENV HOST 0.0.0.0
+# runtime stage
+FROM node:20-alpine AS runtime
+
+WORKDIR /app
+
+RUN apk add --no-cache libc6-compat
+
+ENV NODE_ENV=production
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
+
+COPY --from=builder --chown=node:node /app/package.json /app/package-lock.json ./
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/.next ./.next
+COPY --from=builder --chown=node:node /app/next.config.mjs ./
+
+USER node
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
